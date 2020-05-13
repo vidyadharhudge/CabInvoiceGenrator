@@ -1,4 +1,4 @@
-import com.cabinvoicegenrator.InvoiceGenrator;
+import com.cabinvoicegenrator.InvoiceService;
 import com.cabinvoicegenrator.InvoiceSummary;
 import com.cabinvoicegenrator.Ride;
 import org.junit.Assert;
@@ -7,11 +7,11 @@ import org.junit.Test;
 
 public class InvoiceGenratorTest
 {
-    InvoiceGenrator invoiceGenrator=null;
+    InvoiceService invoiceService=null;
 
     @Before
     public void setup() {
-        invoiceGenrator = new InvoiceGenrator();
+        invoiceService = new InvoiceService();
     }
 
     /* T.c 1.1;-Given Distance And Time Should Return Total Fare*/
@@ -20,7 +20,7 @@ public class InvoiceGenratorTest
     {
         double distance=4.0;
         int time=5;
-        double fare=invoiceGenrator.calculateFare(distance,time);
+        double fare=invoiceService.calculateFare(distance,time);
         Assert.assertEquals(45,fare,0.0);
     }
 
@@ -30,16 +30,27 @@ public class InvoiceGenratorTest
     {
         double distance=0.1;
         int time=1;
-        double fare=invoiceGenrator.calculateFare(distance,time);
+        double fare=invoiceService.calculateFare(distance,time);
         Assert.assertEquals(5,fare,0.0);
     }
 
     /* T.c 2,3:-Calculate Total Fare,Num Of Ride,Avg Fare Per Ride For Multiple Rides */
     @Test
-    public void givenMultipleRides_ShouldReturnInvoiceSummary()
+    public void givenMultipleRides_WhenInvoiceGenrator_ShouldReturnInvoiceSummary()
     {
         Ride[]rides={new Ride(4.0,5),new Ride(0.1,1)};
-        InvoiceSummary Summary=invoiceGenrator.calculateFare(rides);
+        InvoiceSummary Summary=invoiceService.calculateFare(rides);
+        InvoiceSummary expectedInvoiceSummary=new InvoiceSummary(2,50);
+        Assert.assertEquals(expectedInvoiceSummary,Summary);
+    }
+    /* T.c 4:-Given User Id Invoice Service Get List Of Ride */
+    @Test
+    public void givenUserIdAndRides_WhenInvoiceGenrator_ShouldReturnInvoiceSummary()
+    {
+        String userId="dhiraj@123";
+        Ride[]rides={new Ride(4.0,5),new Ride(0.1,1)};
+        invoiceService.addRides(userId,rides);
+        InvoiceSummary Summary=invoiceService.getInvoiceSummary(userId);
         InvoiceSummary expectedInvoiceSummary=new InvoiceSummary(2,50);
         Assert.assertEquals(expectedInvoiceSummary,Summary);
     }

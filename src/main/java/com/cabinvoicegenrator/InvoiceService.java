@@ -1,6 +1,6 @@
 package com.cabinvoicegenrator;
 
-public class InvoiceGenrator {
+public class InvoiceService {
     private static final double RS_PER_KILOMETER = 10;
     private static final int RS_PER_MINUTE = 1;
     private static final double MINIMUM_FARE = 5;
@@ -22,6 +22,18 @@ public class InvoiceGenrator {
             totalFare+=this.calculateFare(ride.distance,ride.time);
         }
         return new InvoiceSummary(rides.length,totalFare);
+    }
+
+    public InvoiceSummary getInvoiceSummary(String userId)
+    {
+        return null;
+
+    }
+
+    public void addRides(String userId, Ride[] rides)
+    {
+        return;
+
     }
 }
 
