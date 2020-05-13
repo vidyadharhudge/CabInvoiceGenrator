@@ -4,6 +4,12 @@ public class InvoiceService {
     private static final double RS_PER_KILOMETER = 10;
     private static final int RS_PER_MINUTE = 1;
     private static final double MINIMUM_FARE = 5;
+    private RideRepoisitory rideRepoisitory;
+
+    public InvoiceService()
+    {
+        rideRepoisitory=new RideRepoisitory();
+    }
 
     public double calculateFare(double distance, int time) {
         double totalFare = RS_PER_KILOMETER * distance + RS_PER_MINUTE * time;
@@ -26,14 +32,12 @@ public class InvoiceService {
 
     public InvoiceSummary getInvoiceSummary(String userId)
     {
-        return null;
-
+        return this.calculateFare(rideRepoisitory.getRides(userId));
     }
 
     public void addRides(String userId, Ride[] rides)
     {
-        return;
-
+        rideRepoisitory.addRides(userId,rides);
     }
 }
 
