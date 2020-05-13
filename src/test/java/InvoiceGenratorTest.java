@@ -1,4 +1,5 @@
 import com.cabinvoicegenrator.InvoiceGenrator;
+import com.cabinvoicegenrator.InvoiceSummary;
 import com.cabinvoicegenrator.Ride;
 import org.junit.Assert;
 import org.junit.Before;
@@ -33,16 +34,7 @@ public class InvoiceGenratorTest
         Assert.assertEquals(5,fare,0.0);
     }
 
-    /* T.c 2:-Calculate Total Fare For Multiple Rides */
-    @Test
-    public void givenMultipleRides_ShouldReturnTotalFare()
-    {
-        Ride[]rides={new Ride(4.0,5),new Ride(0.1,1)};
-        double fare=invoiceGenrator.calculateFare(rides);
-        Assert.assertEquals(50,fare,0.0);
-    }
-
-    /* T.c 3:-Calculate Total Fare For Multiple Rides */
+    /* T.c 2,3:-Calculate Total Fare,Num Of Ride,Avg Fare Per Ride For Multiple Rides */
     @Test
     public void givenMultipleRides_ShouldReturnInvoiceSummary()
     {
