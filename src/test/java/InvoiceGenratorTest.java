@@ -21,4 +21,14 @@ public class InvoiceGenratorTest
         double fare=invoiceGenrator.calculateFare(distance,time);
         Assert.assertEquals(45,fare,0.0);
     }
+
+    /* T.c 1.2;-Given Distance And Time Should Return Minimum Fare*/
+    @Test
+    public void givenMinDistanceAndTime_WhenInvoiceGenrator_ShouldReturnMinFare()
+    {
+        double distance=0.1;
+        int time=1;
+        double fare=invoiceGenrator.calculateFare(distance,time);
+        Assert.assertEquals(5,fare,0.0);
+    }
 }
