@@ -35,10 +35,20 @@ public class InvoiceGenratorTest
 
     /* T.c 2:-Calculate Total Fare For Multiple Rides */
     @Test
-    public void givenMultipleRides_ShouldReturnInvoiceSummary()
+    public void givenMultipleRides_ShouldReturnTotalFare()
     {
         Ride[]rides={new Ride(4.0,5),new Ride(0.1,1)};
         double fare=invoiceGenrator.calculateFare(rides);
         Assert.assertEquals(50,fare,0.0);
+    }
+
+    /* T.c 3:-Calculate Total Fare For Multiple Rides */
+    @Test
+    public void givenMultipleRides_ShouldReturnInvoiceSummary()
+    {
+        Ride[]rides={new Ride(4.0,5),new Ride(0.1,1)};
+        InvoiceSummary Summary=invoiceGenrator.calculateFare(rides);
+        InvoiceSummary expectedInvoiceSummary=new InvoiceSummary(2,50);
+        Assert.assertEquals(expectedInvoiceSummary,Summary);
     }
 }
