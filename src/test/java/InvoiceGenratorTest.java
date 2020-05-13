@@ -5,7 +5,6 @@ import org.junit.Test;
 
 public class InvoiceGenratorTest
 {
-
     InvoiceGenrator invoiceGenrator=null;
 
     @Before
@@ -13,8 +12,9 @@ public class InvoiceGenratorTest
         invoiceGenrator = new InvoiceGenrator();
     }
 
+    /* T.c 1.1;-Given Distance And Time Should Return Total Fare*/
     @Test
-    public void givenDistanceAndTime_ShouldReturnTotalFare()
+    public void givenDistanceAndTime_WhenInvoiceGenrator_ShouldReturnTotalFare()
     {
         double distance=4.0;
         int time=5;
