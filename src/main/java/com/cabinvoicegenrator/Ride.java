@@ -1,12 +1,14 @@
 package com.cabinvoicegenrator;
 
+import com.cabinvoicegenrator.forenum.CabRides;
+
 public class Ride
 {
   public final double distance;
-  public final int time;
+  public final double time;
   public final CabRides CabRide;
 
-    public Ride(CabRides rides,double distance, int time)
+    public Ride(CabRides rides,double distance, double time)
     {
         this.CabRide=rides;
         this.distance = distance;

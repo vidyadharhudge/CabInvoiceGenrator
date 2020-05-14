@@ -1,5 +1,7 @@
 package com.cabinvoicegenrator;
 
+import com.cabinvoicegenrator.repoisitory.RideRepoisitory;
+
 public class InvoiceService {
 
     private RideRepoisitory rideRepoisitory;

@@ -1,4 +1,6 @@
-package com.cabinvoicegenrator;
+package com.cabinvoicegenrator.forenum;
+
+import com.cabinvoicegenrator.Ride;
 
 public enum CabRides
 {

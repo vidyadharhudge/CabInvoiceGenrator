@@ -4,11 +4,11 @@ import java.util.Objects;
 
 public class InvoiceSummary
 {
-    private final int totalNumberOfRides;
+    private final double totalNumberOfRides;
     private final double totalFare;
     private final double avgFarePerRide;
 
-    public InvoiceSummary(int totalNumberOfRides, double totalFare) {
+    public InvoiceSummary(double totalNumberOfRides, double totalFare) {
         this.totalNumberOfRides = totalNumberOfRides;
         this.totalFare = totalFare;
         this.avgFarePerRide = this.totalFare/this.totalNumberOfRides;

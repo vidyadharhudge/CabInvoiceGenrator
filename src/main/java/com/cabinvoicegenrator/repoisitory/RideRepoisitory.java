@@ -1,11 +1,15 @@
-package com.cabinvoicegenrator;
+package com.cabinvoicegenrator.repoisitory;
 
-import java.lang.reflect.Array;
-import java.util.*;
+import com.cabinvoicegenrator.Ride;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 public class RideRepoisitory
 {
-    Map<String, ArrayList<Ride>>Rides;
+    Map<String, ArrayList<Ride>> Rides;
     public RideRepoisitory()
     {
         this.Rides=new HashMap<>();
