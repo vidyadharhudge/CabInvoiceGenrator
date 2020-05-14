@@ -18,9 +18,10 @@ public class InvoiceSummary
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        InvoiceSummary that = (InvoiceSummary) o;
-        return totalNumberOfRides == that.totalNumberOfRides &&
-                Double.compare(that.totalFare, totalFare) == 0 &&
-                Double.compare(that.avgFarePerRide, avgFarePerRide) == 0;
+        InvoiceSummary summary = (InvoiceSummary) o;
+        return totalNumberOfRides == summary.totalNumberOfRides &&
+                Double.compare(summary.totalFare, totalFare) == 0 &&
+                Double.compare(summary.avgFarePerRide, avgFarePerRide) == 0;
     }
+
 }

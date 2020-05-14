@@ -1,9 +1,7 @@
 package com.cabinvoicegenrator;
 
 public class InvoiceService {
-    private static final double RS_PER_KILOMETER = 10;
-    private static final int RS_PER_MINUTE = 1;
-    private static final double MINIMUM_FARE = 5;
+
     private RideRepoisitory rideRepoisitory;
 
     public InvoiceService()
@@ -11,33 +9,30 @@ public class InvoiceService {
         rideRepoisitory=new RideRepoisitory();
     }
 
-    public double calculateFare(double distance, int time) {
-        double totalFare = RS_PER_KILOMETER * distance + RS_PER_MINUTE * time;
-        if (totalFare < MINIMUM_FARE) {
-            return MINIMUM_FARE;
-        } else {
-            return totalFare;
-        }
-    }
 
-    public InvoiceSummary calculateFare(Ride[] rides)
+    public InvoiceSummary getTotalFare(Ride[] rides)
     {
         double totalFare=0;
         for (Ride ride:rides)
         {
-            totalFare+=this.calculateFare(ride.distance,ride.time);
+            totalFare+=ride.CabRide.calculateCostOfRide(ride);
         }
         return new InvoiceSummary(rides.length,totalFare);
     }
 
     public InvoiceSummary getInvoiceSummary(String userId)
     {
-        return this.calculateFare(rideRepoisitory.getRides(userId));
+        return this.getTotalFare(rideRepoisitory.getRides(userId));
     }
 
     public void addRides(String userId, Ride[] rides)
     {
         rideRepoisitory.addRides(userId,rides);
+    }
+
+    public void setRideRepository(RideRepoisitory rideRepoisitory)
+    {
+        this.rideRepoisitory=rideRepoisitory;
     }
 }
 
