@@ -18,5 +18,4 @@ public class RideRepoisitory
     {
         return this.Rides.get(userId).toArray(new Ride[0]);
     }
-
 }

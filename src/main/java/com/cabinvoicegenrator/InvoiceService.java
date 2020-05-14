@@ -9,7 +9,6 @@ public class InvoiceService {
         rideRepoisitory=new RideRepoisitory();
     }
 
-
     public InvoiceSummary getTotalFare(Ride[] rides)
     {
         double totalFare=0;
