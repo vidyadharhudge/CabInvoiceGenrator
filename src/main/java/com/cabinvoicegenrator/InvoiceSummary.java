@@ -2,8 +2,7 @@ package com.cabinvoicegenrator;
 
 import java.util.Objects;
 
-public class InvoiceSummary
-{
+public class InvoiceSummary {
     private final double totalNumberOfRides;
     private final double totalFare;
     private final double avgFarePerRide;

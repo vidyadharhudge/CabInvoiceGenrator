@@ -1,25 +1,21 @@
 package com.cabinvoicegenrator.repoisitory;
 
-import com.cabinvoicegenrator.Ride;
+import com.cabinvoicegenrator.model.Ride;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
-public class RideRepoisitory
-{
+public class RideRepoisitory {
     Map<String, ArrayList<Ride>> Rides;
-    public RideRepoisitory()
-    {
+    public RideRepoisitory() {
         this.Rides=new HashMap<>();
     }
-    public void addRides(String userId, Ride[] rides)
-    {
+    public void addRides(String userId, Ride[] rides) {
         this.Rides.put(userId,new ArrayList<>(Arrays.asList(rides)));
     }
-    public Ride[]getRides(String userId)
-    {
+    public Ride[]getRides(String userId) {
         return this.Rides.get(userId).toArray(new Ride[0]);
     }
 }

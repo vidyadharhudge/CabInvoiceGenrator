@@ -1,5 +1,7 @@
 import com.cabinvoicegenrator.*;
+import com.cabinvoicegenrator.exception.CabInvoiceServiceException;
 import com.cabinvoicegenrator.forenum.CabRides;
+import com.cabinvoicegenrator.model.Ride;
 import com.cabinvoicegenrator.repoisitory.RideRepoisitory;
 import org.junit.Assert;
 import org.junit.Before;
@@ -105,15 +107,42 @@ public class InvoiceGenratorTest {
         rides = new Ride[]{
                 new Ride(CabRides.NORMAL, 2.0, 5),
                 new Ride(CabRides.PREMIUM, 0.1, 1),
-                new Ride(CabRides.NORMAL, 2.0, 5),
-                new Ride(CabRides.PREMIUM, 0.1, 1)
         };
         InvoiceSummary Summary = invoiceService.getInvoiceSummary(userId);
         expectedInvoiceSummary = new InvoiceSummary(2, 45);
         Assert.assertEquals(expectedInvoiceSummary, Summary);
     }
-}
 
+    @Test
+    public void givenUserIdAndRides_WhenDistanceNegative_ShouldReturnException() {
+        try {
+            String userId = "dhiraj@123";
+            invoiceService.addRides(userId, rides);
+            rides = new Ride[]{
+                    new Ride(CabRides.NORMAL, -2.0, 5),
+                    new Ride(CabRides.PREMIUM, -0.1, 1),
+            };
+        } catch (CabInvoiceServiceException e) {
+            Assert.assertEquals("Enter valid Distance And Time", e.getMessage());
+
+        }
+    }
+
+    @Test
+    public void givenUserIdAndRides_WhenTimeNegative_ShouldReturnException() {
+        try {
+            String userId = "dhiraj@123";
+            invoiceService.addRides(userId, rides);
+            rides = new Ride[]{
+                    new Ride(CabRides.NORMAL, 2.0, -5),
+                    new Ride(CabRides.PREMIUM, 0.1, -1),
+            };
+        } catch (CabInvoiceServiceException e) {
+            Assert.assertEquals("Enter valid Distance And Time", e.getMessage());
+
+        }
+    }
+}
 
 
 
